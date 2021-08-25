@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load custom_filters %}
+
+{% block title %}{{products.name}}{% endblock %}
+
+
+{% block content %}
+
+
+<div class='container mt-4 p-4'>
+    <style>
+        
+    </style>
+
+    <div class="row">
+        <div class='col-5'>
+            <img id="mainImage" src="{{products.thumbnil.url}}" class="img-fluid border rounded"/>
+            
+            <hr/>
+
+            <div class='row'>
+                {% for image in images %}
+                <!--{{img.image.url}}-->
+                
+                    <div class="col-3">
+                        <img onclick="changeImage(event)" class="img-thumbnail"  src="{{image.image.url}}"/>
+                    </div>
+                
+                {%endfor%}
+            </div>
+        </div>
+        
+        <div class='col-7'>
+            <h4 class='display-1'>{{products.name}}</h4>
+
+            <hr/>
+            <div class='row'>
+            <div class="col-4">
+                <p class='display-8 badge badge-warning'>Save {{products.discount}}%</p>
+                
+                <h4 id="pro">price <del>{{products.price |rupee}}</del> &nbsp; {{products |sale_price |rupee}}</h4>
+            </div>    &nbsp
+            <div class='col-2 border rounded mt-3'>
+                <div class='p-2'>
+                    <a href="" class= "btn btn-outline-dark btn-block " id="one">1 KG</a>
+                    <a href="" class= "btn btn-outline-dark btn-block">2 KG</a>
+                    
+                </div>
+            </div>
+            &nbsp &nbsp &nbsp
+            <div class='col-4 border rounded mt-3'>
+                <div class='p-2'>
+                    <a href="" class= "btn btn-outline-dark btn-block">Add To Cart</a>
+                    <a href="" class= "btn btn-outline-dark btn-block">Buy</a>
+                    
+                </div>
+            </div>
+            
+            </div>
+
+            <hr/>
+            <p><b>Description :</b></p>
+            <p>
+                {{products.discription}}
+            </p>
+        </div>
+        
+    </div>
+    <hr/>
+</div>
+{%load static%} 
+<script src="{% static 'app/js/product_details.js'%}"></script>
+<script>
+    console.log(document.getElementById("one"))
+</script>
+{% endblock %}

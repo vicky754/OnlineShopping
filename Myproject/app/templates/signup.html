@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+
+<div class='col-lg-4 mx-auto border rounded p-3 mt-3'>
+    <form method='POST' >
+        <h1 class="display-4">Create Account</h1>
+        <hr>
+        {%csrf_token%}
+        {{form | crispy}}
+        <br>
+        <div class="form-group">
+            <input class="btn btn-info" type="submit" value="Create Account">
+        </div>
+        
+    </form>
+</div>
+{% endblock %}
